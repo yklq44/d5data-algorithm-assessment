@@ -1,0 +1,685 @@
+{
+  "config": {
+    "split": "train",
+    "images": 50000,
+    "prompts": {
+      "clip": "guided",
+      "siglip": "guided",
+      "qwen": "simple"
+    },
+    "models": {
+      "clip": "openai/clip-vit-large-patch14",
+      "siglip": "google/siglip2-so400m-patch14-224",
+      "qwen": "Qwen/Qwen3-VL-4B-Instruct"
+    },
+    "temperatures": {
+      "clip": 0.7235752175411615,
+      "siglip": 0.7826151401758459,
+      "qwen": 2.8550486297273996
+    },
+    "review_threshold": 0.9
+  },
+  "dev": {
+    "prompt_ablation": {
+      "clip": {
+        "simple": 0.9515,
+        "templates": 0.9559,
+        "guided": 0.9638
+      },
+      "siglip": {
+        "simple": 0.975,
+        "templates": 0.9782,
+        "guided": 0.98
+      },
+      "qwen": {
+        "simple": 0.9691,
+        "guided": 0.9684
+      }
+    },
+    "calibration": {
+      "clip": {
+        "temperature": 0.724,
+        "mean_conf_before": 0.9288,
+        "mean_conf_after": 0.9637,
+        "accuracy": 0.9638,
+        "ece_before": 0.0356,
+        "ece_after": 0.0045
+      },
+      "siglip": {
+        "temperature": 0.783,
+        "mean_conf_before": 0.9672,
+        "mean_conf_after": 0.9796,
+        "accuracy": 0.98,
+        "ece_before": 0.0129,
+        "ece_after": 0.004
+      },
+      "qwen": {
+        "temperature": 2.855,
+        "mean_conf_before": 0.9927,
+        "mean_conf_after": 0.9719,
+        "accuracy": 0.9691,
+        "ece_before": 0.0237,
+        "ece_after": 0.0036
+      }
+    },
+    "vote_accuracy": 0.9847,
+    "review_threshold_sweep": [
+      {
+        "threshold": 0.0,
+        "coverage": 0.9416,
+        "accepted_accuracy": 0.9966
+      },
+      {
+        "threshold": 0.5,
+        "coverage": 0.9416,
+        "accepted_accuracy": 0.9966
+      },
+      {
+        "threshold": 0.7,
+        "coverage": 0.9367,
+        "accepted_accuracy": 0.9974
+      },
+      {
+        "threshold": 0.8,
+        "coverage": 0.9292,
+        "accepted_accuracy": 0.9978
+      },
+      {
+        "threshold": 0.85,
+        "coverage": 0.9167,
+        "accepted_accuracy": 0.9981
+      },
+      {
+        "threshold": 0.9,
+        "coverage": 0.8979,
+        "accepted_accuracy": 0.9984
+      },
+      {
+        "threshold": 0.95,
+        "coverage": 0.8626,
+        "accepted_accuracy": 0.9986
+      },
+      {
+        "threshold": 0.97,
+        "coverage": 0.8292,
+        "accepted_accuracy": 0.9993
+      },
+      {
+        "threshold": 0.98,
+        "coverage": 0.7923,
+        "accepted_accuracy": 0.9992
+      },
+      {
+        "threshold": 0.99,
+        "coverage": 0.7025,
+        "accepted_accuracy": 0.9996
+      }
+    ]
+  },
+  "train": {
+    "labelers": {
+      "human_label1": {
+        "accuracy": 0.8277,
+        "agreement_with_crowd_majority": 0.8538,
+        "kappa_with_crowd_majority": 0.8375
+      },
+      "human_label2": {
+        "accuracy": 0.8188,
+        "agreement_with_crowd_majority": 0.8446,
+        "kappa_with_crowd_majority": 0.8273
+      },
+      "human_label3": {
+        "accuracy": 0.8236,
+        "agreement_with_crowd_majority": 0.8443,
+        "kappa_with_crowd_majority": 0.827
+      },
+      "human_majority": {
+        "accuracy": 0.9099,
+        "agreement_with_crowd_majority": 1.0,
+        "kappa_with_crowd_majority": 1.0
+      },
+      "clip": {
+        "accuracy": 0.9648,
+        "agreement_with_crowd_majority": 0.8917,
+        "kappa_with_crowd_majority": 0.8797
+      },
+      "siglip": {
+        "accuracy": 0.9809,
+        "agreement_with_crowd_majority": 0.9033,
+        "kappa_with_crowd_majority": 0.8926
+      },
+      "qwen": {
+        "accuracy": 0.9707,
+        "agreement_with_crowd_majority": 0.8975,
+        "kappa_with_crowd_majority": 0.8861
+      },
+      "vote": {
+        "accuracy": 0.9856,
+        "agreement_with_crowd_majority": 0.9066,
+        "kappa_with_crowd_majority": 0.8962
+      },
+      "single_crowd_label": {
+        "accuracy": 0.8233,
+        "agreement_with_crowd_majority": 0.8476,
+        "kappa_with_crowd_majority": 0.8306
+      }
+    },
+    "per_class_accuracy": {
+      "single_crowd_label": {
+        "airplane": 0.8463,
+        "automobile": 0.8402,
+        "bird": 0.8391,
+        "cat": 0.7417,
+        "deer": 0.7514,
+        "dog": 0.8165,
+        "frog": 0.826,
+        "horse": 0.8897,
+        "ship": 0.8753,
+        "truck": 0.8071
+      },
+      "human_majority": {
+        "airplane": 0.943,
+        "automobile": 0.948,
+        "bird": 0.931,
+        "cat": 0.8252,
+        "deer": 0.8312,
+        "dog": 0.892,
+        "frog": 0.9002,
+        "horse": 0.9552,
+        "ship": 0.9738,
+        "truck": 0.8994
+      },
+      "clip": {
+        "airplane": 0.977,
+        "automobile": 0.9848,
+        "bird": 0.9822,
+        "cat": 0.9314,
+        "deer": 0.959,
+        "dog": 0.9576,
+        "frog": 0.899,
+        "horse": 0.985,
+        "ship": 0.988,
+        "truck": 0.9836
+      },
+      "siglip": {
+        "airplane": 0.9764,
+        "automobile": 0.99,
+        "bird": 0.9842,
+        "cat": 0.9584,
+        "deer": 0.9656,
+        "dog": 0.9794,
+        "frog": 0.9704,
+        "horse": 0.9954,
+        "ship": 0.9956,
+        "truck": 0.9934
+      },
+      "qwen": {
+        "airplane": 0.9708,
+        "automobile": 0.9746,
+        "bird": 0.9898,
+        "cat": 0.941,
+        "deer": 0.9582,
+        "dog": 0.9608,
+        "frog": 0.9474,
+        "horse": 0.9922,
+        "ship": 0.979,
+        "truck": 0.9928
+      },
+      "vote": {
+        "airplane": 0.9872,
+        "automobile": 0.9902,
+        "bird": 0.9946,
+        "cat": 0.9668,
+        "deer": 0.9778,
+        "dog": 0.9798,
+        "frog": 0.9744,
+        "horse": 0.9962,
+        "ship": 0.994,
+        "truck": 0.9946
+      }
+    },
+    "soft_vote_accuracy": 0.9856,
+    "hard_vote_accuracy": 0.9843,
+    "accuracy_by_model_agreement": {
+      "1_of_3_models_agree_with_vote": {
+        "share": 0.0072,
+        "vote_accuracy": 0.6288
+      },
+      "2_of_3_models_agree_with_vote": {
+        "share": 0.0497,
+        "vote_accuracy": 0.8249
+      },
+      "3_of_3_models_agree_with_vote": {
+        "share": 0.943,
+        "vote_accuracy": 0.9968
+      }
+    },
+    "ece_calibrated": {
+      "clip": 0.0032,
+      "siglip": 0.0023,
+      "qwen": 0.0026,
+      "vote": 0.0231
+    },
+    "top_confusions": {
+      "single_crowd_label": {
+        "truck->automobile": 1867,
+        "cat->dog": 1577,
+        "automobile->truck": 1480,
+        "dog->cat": 1242,
+        "deer->horse": 1145
+      },
+      "clip": {
+        "frog->bird": 177,
+        "cat->dog": 177,
+        "frog->deer": 133,
+        "dog->cat": 124,
+        "deer->horse": 123
+      },
+      "siglip": {
+        "cat->dog": 149,
+        "dog->cat": 83,
+        "deer->horse": 73,
+        "frog->cat": 60,
+        "airplane->bird": 53
+      },
+      "qwen": {
+        "cat->dog": 180,
+        "frog->bird": 171,
+        "dog->cat": 157,
+        "airplane->bird": 124,
+        "automobile->truck": 122
+      },
+      "vote": {
+        "cat->dog": 106,
+        "dog->cat": 82,
+        "frog->bird": 58,
+        "deer->horse": 54,
+        "automobile->truck": 47
+      }
+    },
+    "accuracy_by_crowd_correctness": {
+      "0_of_3_crowd_labels_correct": {
+        "images": 1067,
+        "clip": 0.7779,
+        "siglip": 0.8154,
+        "qwen": 0.7788,
+        "vote": 0.8379
+      },
+      "1_of_3_crowd_labels_correct": {
+        "images": 4260,
+        "clip": 0.9014,
+        "siglip": 0.9378,
+        "qwen": 0.9077,
+        "vote": 0.9495
+      },
+      "2_of_3_crowd_labels_correct": {
+        "images": 14777,
+        "clip": 0.9612,
+        "siglip": 0.98,
+        "qwen": 0.9682,
+        "vote": 0.9868
+      },
+      "3_of_3_crowd_labels_correct": {
+        "images": 29896,
+        "clip": 0.9822,
+        "siglip": 0.9933,
+        "qwen": 0.9877,
+        "vote": 0.9954
+      }
+    },
+    "accuracy_at_coverage": {
+      "clip": {
+        "0.50": 0.9991,
+        "0.70": 0.9979,
+        "0.80": 0.9968,
+        "0.90": 0.9928,
+        "0.95": 0.9864,
+        "1.00": 0.9648
+      },
+      "siglip": {
+        "0.50": 0.9998,
+        "0.70": 0.9997,
+        "0.80": 0.9995,
+        "0.90": 0.9986,
+        "0.95": 0.9962,
+        "1.00": 0.9809
+      },
+      "qwen": {
+        "0.50": 0.9988,
+        "0.70": 0.9982,
+        "0.80": 0.9978,
+        "0.90": 0.9952,
+        "0.95": 0.9903,
+        "1.00": 0.9707
+      },
+      "vote": {
+        "0.50": 0.9998,
+        "0.70": 0.9998,
+        "0.80": 0.9996,
+        "0.90": 0.999,
+        "0.95": 0.997,
+        "1.00": 0.9856
+      }
+    },
+    "human_in_the_loop": [
+      {
+        "threshold": 0.0,
+        "auto_labeled": 0.943,
+        "auto_label_accuracy": 0.9968,
+        "on_routed_images": {
+          "model_vote": 0.7996,
+          "one_crowd_label": 0.6234,
+          "crowd_majority": 0.688
+        },
+        "final_accuracy_route_to_one_crowd_label": 0.9755,
+        "human_labels_per_image_one_crowd_label": 0.057,
+        "final_accuracy_route_to_crowd_majority": 0.9792,
+        "human_labels_per_image_crowd_majority": 0.1709,
+        "final_accuracy_route_to_expert": 0.997,
+        "human_labels_per_image_expert": 0.057
+      },
+      {
+        "threshold": 0.5,
+        "auto_labeled": 0.9427,
+        "auto_label_accuracy": 0.9969,
+        "on_routed_images": {
+          "model_vote": 0.7985,
+          "one_crowd_label": 0.6228,
+          "crowd_majority": 0.6877
+        },
+        "final_accuracy_route_to_one_crowd_label": 0.9755,
+        "human_labels_per_image_one_crowd_label": 0.0573,
+        "final_accuracy_route_to_crowd_majority": 0.9792,
+        "human_labels_per_image_crowd_majority": 0.1718,
+        "final_accuracy_route_to_expert": 0.9971,
+        "human_labels_per_image_expert": 0.0573
+      },
+      {
+        "threshold": 0.7,
+        "auto_labeled": 0.9396,
+        "auto_label_accuracy": 0.9973,
+        "on_routed_images": {
+          "model_vote": 0.8024,
+          "one_crowd_label": 0.6207,
+          "crowd_majority": 0.6839
+        },
+        "final_accuracy_route_to_one_crowd_label": 0.9746,
+        "human_labels_per_image_one_crowd_label": 0.0604,
+        "final_accuracy_route_to_crowd_majority": 0.9784,
+        "human_labels_per_image_crowd_majority": 0.1813,
+        "final_accuracy_route_to_expert": 0.9975,
+        "human_labels_per_image_expert": 0.0604
+      },
+      {
+        "threshold": 0.8,
+        "auto_labeled": 0.9311,
+        "auto_label_accuracy": 0.9981,
+        "on_routed_images": {
+          "model_vote": 0.8157,
+          "one_crowd_label": 0.6238,
+          "crowd_majority": 0.6853
+        },
+        "final_accuracy_route_to_one_crowd_label": 0.9723,
+        "human_labels_per_image_one_crowd_label": 0.0689,
+        "final_accuracy_route_to_crowd_majority": 0.9766,
+        "human_labels_per_image_crowd_majority": 0.2067,
+        "final_accuracy_route_to_expert": 0.9983,
+        "human_labels_per_image_expert": 0.0689
+      },
+      {
+        "threshold": 0.85,
+        "auto_labeled": 0.9195,
+        "auto_label_accuracy": 0.9986,
+        "on_routed_images": {
+          "model_vote": 0.8371,
+          "one_crowd_label": 0.6325,
+          "crowd_majority": 0.6956
+        },
+        "final_accuracy_route_to_one_crowd_label": 0.9691,
+        "human_labels_per_image_one_crowd_label": 0.0805,
+        "final_accuracy_route_to_crowd_majority": 0.9742,
+        "human_labels_per_image_crowd_majority": 0.2416,
+        "final_accuracy_route_to_expert": 0.9987,
+        "human_labels_per_image_expert": 0.0805
+      },
+      {
+        "threshold": 0.9,
+        "auto_labeled": 0.9013,
+        "auto_label_accuracy": 0.9989,
+        "on_routed_images": {
+          "model_vote": 0.8634,
+          "one_crowd_label": 0.6409,
+          "crowd_majority": 0.7084
+        },
+        "final_accuracy_route_to_one_crowd_label": 0.9636,
+        "human_labels_per_image_one_crowd_label": 0.0987,
+        "final_accuracy_route_to_crowd_majority": 0.9703,
+        "human_labels_per_image_crowd_majority": 0.2961,
+        "final_accuracy_route_to_expert": 0.999,
+        "human_labels_per_image_expert": 0.0987
+      },
+      {
+        "threshold": 0.95,
+        "auto_labeled": 0.8667,
+        "auto_label_accuracy": 0.9994,
+        "on_routed_images": {
+          "model_vote": 0.8958,
+          "one_crowd_label": 0.6604,
+          "crowd_majority": 0.7326
+        },
+        "final_accuracy_route_to_one_crowd_label": 0.9542,
+        "human_labels_per_image_one_crowd_label": 0.1333,
+        "final_accuracy_route_to_crowd_majority": 0.9638,
+        "human_labels_per_image_crowd_majority": 0.4,
+        "final_accuracy_route_to_expert": 0.9995,
+        "human_labels_per_image_expert": 0.1333
+      },
+      {
+        "threshold": 0.97,
+        "auto_labeled": 0.8326,
+        "auto_label_accuracy": 0.9995,
+        "on_routed_images": {
+          "model_vote": 0.9161,
+          "one_crowd_label": 0.6817,
+          "crowd_majority": 0.7566
+        },
+        "final_accuracy_route_to_one_crowd_label": 0.9463,
+        "human_labels_per_image_one_crowd_label": 0.1674,
+        "final_accuracy_route_to_crowd_majority": 0.9589,
+        "human_labels_per_image_crowd_majority": 0.5022,
+        "final_accuracy_route_to_expert": 0.9996,
+        "human_labels_per_image_expert": 0.1674
+      },
+      {
+        "threshold": 0.98,
+        "auto_labeled": 0.7973,
+        "auto_label_accuracy": 0.9995,
+        "on_routed_images": {
+          "model_vote": 0.9305,
+          "one_crowd_label": 0.7002,
+          "crowd_majority": 0.777
+        },
+        "final_accuracy_route_to_one_crowd_label": 0.9389,
+        "human_labels_per_image_one_crowd_label": 0.2027,
+        "final_accuracy_route_to_crowd_majority": 0.9544,
+        "human_labels_per_image_crowd_majority": 0.608,
+        "final_accuracy_route_to_expert": 0.9996,
+        "human_labels_per_image_expert": 0.2027
+      },
+      {
+        "threshold": 0.99,
+        "auto_labeled": 0.7082,
+        "auto_label_accuracy": 0.9998,
+        "on_routed_images": {
+          "model_vote": 0.951,
+          "one_crowd_label": 0.7288,
+          "crowd_majority": 0.8109
+        },
+        "final_accuracy_route_to_one_crowd_label": 0.9207,
+        "human_labels_per_image_one_crowd_label": 0.2918,
+        "final_accuracy_route_to_crowd_majority": 0.9447,
+        "human_labels_per_image_crowd_majority": 0.8755,
+        "final_accuracy_route_to_expert": 0.9999,
+        "human_labels_per_image_expert": 0.2918
+      }
+    ],
+    "crowd_label_error_detection": {
+      "crowd_majority": {
+        "error_rate": 0.0901,
+        "vote_disagrees": {
+          "flagged": 0.0934,
+          "precision": 0.9225,
+          "recall": 0.9563
+        },
+        "vote_disagrees_conf_0.9": {
+          "flagged": 0.061,
+          "precision": 0.9961,
+          "recall": 0.6741
+        }
+      },
+      "one_crowd_label": {
+        "error_rate": 0.1723,
+        "vote_disagrees": {
+          "flagged": 0.1757,
+          "precision": 0.9587,
+          "recall": 0.9771
+        },
+        "vote_disagrees_conf_0.9": {
+          "flagged": 0.1365,
+          "precision": 0.9984,
+          "recall": 0.791
+        }
+      }
+    },
+    "consistency": {
+      "crowd_all_3_agree": 0.6036,
+      "crowd_fleiss_kappa": 0.6837,
+      "models_all_agree": 0.943,
+      "models_fleiss_kappa": 0.9562
+    },
+    "predicted_class_frequency": {
+      "single_crowd_label": [
+        0.1012,
+        0.1105,
+        0.1038,
+        0.0939,
+        0.0888,
+        0.1078,
+        0.094,
+        0.1044,
+        0.0981,
+        0.0976
+      ],
+      "human_majority": [
+        0.1063,
+        0.1102,
+        0.1081,
+        0.0924,
+        0.087,
+        0.0993,
+        0.0923,
+        0.1001,
+        0.1069,
+        0.0974
+      ],
+      "clip": [
+        0.1,
+        0.1,
+        0.1063,
+        0.0981,
+        0.1006,
+        0.1003,
+        0.0904,
+        0.1024,
+        0.1015,
+        0.1003
+      ],
+      "siglip": [
+        0.0978,
+        0.0997,
+        0.1014,
+        0.0993,
+        0.0976,
+        0.1026,
+        0.0988,
+        0.1015,
+        0.1008,
+        0.1005
+      ],
+      "qwen": [
+        0.0992,
+        0.098,
+        0.1091,
+        0.0986,
+        0.0967,
+        0.1018,
+        0.095,
+        0.1012,
+        0.0983,
+        0.1021
+      ],
+      "vote": [
+        0.0993,
+        0.0995,
+        0.103,
+        0.0992,
+        0.0988,
+        0.1008,
+        0.0977,
+        0.101,
+        0.1001,
+        0.1006
+      ]
+    },
+    "suspected_ground_truth_errors": {
+      "models_unanimous_and_crowd_majority_agree": 29,
+      "all_3_models_and_all_3_crowd_labels_agree": 11
+    },
+    "qwen_label_token_mass": {
+      "mean": 0.9998,
+      "min": 0.0028,
+      "share_below_0.9": 0.0002
+    }
+  },
+  "human_effort": {
+    "seconds_per_image_mean": 4.668,
+    "seconds_per_image_median": 4.2,
+    "worker_hours_for_3_labels_per_image": 194.5,
+    "distinct_workers": 747
+  },
+  "model_throughput": {
+    "clip": {
+      "model": "openai/clip-vit-large-patch14",
+      "prompt": "guided",
+      "images": 50000,
+      "batch_size": 256,
+      "seconds": 323.3,
+      "images_per_second": 154.6,
+      "device": "NVIDIA GeForce RTX 4060 Ti",
+      "torch": "2.14.1+cu126",
+      "transformers": "5.23.0"
+    },
+    "siglip": {
+      "model": "google/siglip2-so400m-patch14-224",
+      "prompt": "guided",
+      "images": 50000,
+      "batch_size": 128,
+      "seconds": 377.8,
+      "images_per_second": 132.4,
+      "device": "NVIDIA GeForce RTX 4060 Ti",
+      "torch": "2.14.1+cu126",
+      "transformers": "5.23.0"
+    },
+    "qwen": {
+      "model": "Qwen/Qwen3-VL-4B-Instruct",
+      "prompt": "simple",
+      "images": 50000,
+      "batch_size": 32,
+      "seconds": 1714.7,
+      "images_per_second": 29.2,
+      "device": "NVIDIA GeForce RTX 4060 Ti",
+      "torch": "2.14.1+cu126",
+      "transformers": "5.23.0"
+    }
+  }
+}

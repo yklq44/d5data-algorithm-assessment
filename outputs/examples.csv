@@ -1,0 +1,13 @@
+index,true_label,human_label1,human_label2,human_label3,human_majority,clip_label,clip_conf,siglip_label,siglip_conf,qwen_label,qwen_conf,vote_label,vote_conf,n_agree,needs_review,group
+31979,bird,bird,bird,bird,bird,bird,0.9998,bird,0.9988,bird,0.9994,bird,0.9993,3,False,Everyone agrees
+25761,frog,frog,frog,frog,frog,frog,1.0,frog,1.0,frog,0.9976,frog,0.9992,3,False,Everyone agrees
+42643,deer,deer,deer,deer,deer,deer,0.9947,deer,0.9979,deer,0.9814,deer,0.9913,3,False,Everyone agrees
+723,ship,truck,ship,truck,truck,ship,0.9923,ship,0.9975,ship,0.9978,ship,0.9959,3,False,"Models right, crowd majority wrong"
+3577,deer,deer,dog,dog,dog,deer,0.9269,dog,0.5418,deer,0.9766,deer,0.7848,2,True,"Models right, crowd majority wrong"
+1992,deer,dog,frog,frog,frog,deer,0.9999,deer,0.9319,deer,0.9672,deer,0.9663,3,False,"Models right, crowd majority wrong"
+33812,frog,automobile,frog,frog,frog,bird,0.6483,cat,0.4952,bird,0.628,bird,0.4553,2,True,"Crowd majority right, models wrong"
+27277,truck,truck,bird,truck,truck,ship,0.5802,truck,0.6881,bird,0.4438,ship,0.2768,1,True,"Crowd majority right, models wrong"
+45033,truck,truck,horse,truck,truck,automobile,0.647,automobile,0.8578,truck,0.5838,automobile,0.6387,2,True,"Crowd majority right, models wrong"
+37425,cat,dog,cat,dog,dog,dog,0.9506,dog,0.8541,dog,0.9973,dog,0.934,3,False,"Models + crowd agree, CIFAR-10 label differs"
+28608,cat,deer,dog,dog,dog,dog,0.9588,dog,0.9948,dog,0.9988,dog,0.9841,3,False,"Models + crowd agree, CIFAR-10 label differs"
+33079,dog,airplane,horse,horse,horse,horse,0.9998,horse,0.9999,horse,0.9992,horse,0.9996,3,False,"Models + crowd agree, CIFAR-10 label differs"

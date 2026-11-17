@@ -1,0 +1,5 @@
+* text=auto eol=lf
+# Generated outputs are kept byte for byte as written by demo_code.py and analyze.py.
+outputs/** -text
+*.pdf binary
+*.png binary

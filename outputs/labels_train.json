@@ -1,0 +1,20 @@
+{
+  "split": "train",
+  "images": 50000,
+  "prompts": {
+    "clip": "guided",
+    "siglip": "guided",
+    "qwen": "simple"
+  },
+  "models": {
+    "clip": "openai/clip-vit-large-patch14",
+    "siglip": "google/siglip2-so400m-patch14-224",
+    "qwen": "Qwen/Qwen3-VL-4B-Instruct"
+  },
+  "temperatures": {
+    "clip": 0.7235752175411615,
+    "siglip": 0.7826151401758459,
+    "qwen": 2.8550486297273996
+  },
+  "review_threshold": 0.9
+}
