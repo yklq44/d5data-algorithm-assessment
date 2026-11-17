@@ -33,8 +33,8 @@ outputs/
   labels_train.json        models, prompts, temperatures and review threshold used for that CSV
   labels_test.csv / .json  same for the 10k dev split (no human labels)
   examples.csv             the 12 samples shown in figures/examples.png
-  suspected_label_errors.csv  29 images where all models (confidence >= 0.9) and the crowd majority
-                           agree on a label that differs from CIFAR-10
+  suspected_label_errors.csv  29 images where the 3 models and the crowd majority agree (vote
+                           confidence >= 0.9) on a label that differs from CIFAR-10
   metrics.json             every number in the report
   run_info.json            runtime and throughput of each model run
   probs/*.npy              raw per-class scores of every model / prompt / split, so analyze.py

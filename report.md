@@ -83,11 +83,11 @@ models agree on 94.3% of images (Fleiss' κ 0.96), all three workers on 60.4% (�
   of the vote's errors while sending only 9.9% of images to review.
 - **Hard for humans is hard for models.** On the 1,067 images where none of the three workers was
   right, the vote is right on 83.8%; where all three were right, on 99.5%. Some hard images are
-  mislabeled in CIFAR-10 itself: on 29 images, all three models are confident (≥ 0.9) and agree with
-  the crowd majority against the CIFAR-10 label. By visual inspection, about 23 of these are real
-  CIFAR-10 errors, mostly cat/dog swaps and birds labeled airplane (Figure 1, bottom right;
-  `outputs/suspected_label_errors.csv`). Accuracies above about 99.5% are therefore within the noise
-  of the reference labels.
+  mislabeled in CIFAR-10 itself: on 29 images, the three models agree with each other and with the
+  crowd majority, at a vote confidence of at least 0.9, against the CIFAR-10 label. By visual
+  inspection, about 23 of these are real CIFAR-10 errors, mostly cat/dog swaps and birds labeled
+  airplane (Figure 1, bottom right; `outputs/suspected_label_errors.csv`). Accuracies above about
+  99.5% are therefore within the noise of the reference labels.
 
 <img src="outputs/figures/examples.png" width="100%" alt="Sample outputs">
 <p class="small"><b>Figure 1.</b> Random samples from four groups (all listed in
@@ -96,7 +96,7 @@ the labels from CLIP, SigLIP2 and Qwen3-VL in that order, and the vote with its 
 confidence.</p>
 
 - **The VLM needs care.** Before calibration it is over-confident: its mean confidence is 0.993 at
-  96.9% accuracy, and 38% of its errors have confidence above 0.99. Temperature scaling (T = 2.9)
+  96.9% accuracy, and 39% of its errors have confidence above 0.99. Temperature scaling (T = 2.9)
   cuts its calibration error (ECE) from 2.4% to 0.4%, and on the train split all three models have
   an ECE of 0.3% or less. Rewording its prompt flips 1.7% of its labels. Constrained decoding also
   hides abstentions. On the 0.02% of images where less than 90% of its next-token probability falls
@@ -111,7 +111,7 @@ confidence.</p>
 | Cost (50k images) | 194.5 worker-hours for 3 labels per image, about US$1.4k even at US$7.25/h | 40 GPU-minutes (under 0.2 kWh) and no API fees, plus a one-off 14 GB weight download and prompt engineering |
 | Consistency | All 3 workers agree on 60.4% of images; about 1% slips into unrelated classes (e.g. frog→automobile 1.5%) | Deterministic, and the 3 models agree on 94.3%. Rewording a prompt flips 1.7% of the VLM's labels |
 | Semantic understanding | Uses context, but applies its own notion of the classes: 12.4% of trucks are labeled automobile and 9.9% of automobiles truck | Strong object recognition. Follows the class definitions only when told (the vote labels 0.9% of automobiles truck); misreads small objects and unusual views |
-| Bias | Over-uses *automobile* (11.0% of labels for a 10% class) and under-uses *deer* (8.7%) | Qwen3-VL over-uses *bird* (10.9%) and CLIP under-uses *frog* (9.0%). Pretraining may include CIFAR-like web images, which would make zero-shot accuracy optimistic |
+| Bias | Over-uses *automobile* (11.0% of labels for a 10% class) and under-uses *deer* (8.9%) | Qwen3-VL over-uses *bird* (10.9%) and CLIP under-uses *frog* (9.0%). Pretraining may include CIFAR-like web images, which would make zero-shot accuracy optimistic |
 
 ## 6. Improvements, all measured on this data
 

@@ -8,8 +8,8 @@ Outputs:
   outputs/metrics.json                 every number quoted in the report
   outputs/figures/*.png
   outputs/examples.csv                 the samples shown in figures/examples.png
-  outputs/suspected_label_errors.csv   images where all models (confidently) and the crowd majority agree
-                                       on a label that differs from CIFAR-10
+  outputs/suspected_label_errors.csv   images where all models and the crowd majority agree (vote confidence
+                                       >= 0.9) on a label that differs from CIFAR-10
 """
 
 import argparse
